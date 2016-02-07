@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,12 +642,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="YouTubeDL_UI" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
@@ -664,18 +665,195 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--YouTube DL GUI-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="YouTube DL GUI" id="XfG-lQ-9wD" customClass="ViewController" customModule="YouTubeDL_UI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="392"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hy6-Uz-wjp">
+                                <rect key="frame" x="18" y="355" width="89" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="YouTube URL:" id="fSG-Ng-VgP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="W4n-YW-ZQR">
+                                <rect key="frame" x="30" y="301" width="110" height="18"/>
+                                <buttonCell key="cell" type="check" title="Extract audio" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Xpv-cc-Z2v">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="extractAudioButtonPressed:" target="XfG-lQ-9wD" id="aQF-IE-JV2"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aL7-M1-18o">
+                                <rect key="frame" x="20" y="325" width="335" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://www.youtube.com/watch?v=P5_GlAOCHyE" drawsBackground="YES" id="DGw-lh-aYr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rhq-KH-Q9i">
+                                <rect key="frame" x="357" y="319" width="109" height="32"/>
+                                <buttonCell key="cell" type="push" title="View on YT" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RWr-5l-xCg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="viewButtonPressed:" target="XfG-lQ-9wD" id="nlR-uu-7nW"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="dZI-MW-9ZV">
+                                <rect key="frame" x="265" y="301" width="82" height="18"/>
+                                <buttonCell key="cell" type="check" title="Keep files" bezelStyle="regularSquare" imagePosition="left" inset="2" id="uKh-JY-gfd">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="JO6-Ki-6NJ">
+                                <rect key="frame" x="144" y="301" width="117" height="18"/>
+                                <buttonCell key="cell" type="check" title="Convert to MP3" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="3Mb-A8-vwa">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh6-Ag-Zpd">
+                                <rect key="frame" x="20" y="20" width="440" height="186"/>
+                                <clipView key="contentView" id="YTM-ZA-Yoe">
+                                    <rect key="frame" x="1" y="1" width="438" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="bmr-q6-Vgu">
+                                            <rect key="frame" x="0.0" y="0.0" width="438" height="184"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="438" height="184"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="438" height="184"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="aQP-MK-qnV">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lZP-iF-xT6">
+                                    <rect key="frame" x="423" y="1" width="16" height="184"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <pathControl horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Krh-Dk-22F">
+                                <rect key="frame" x="108" y="273" width="352" height="22"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="Yv0-m6-9nC">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file:///Users/raveman/Movies/"/>
+                                    <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
+                                </pathCell>
+                                <connections>
+                                    <action selector="selectDownloadPath:" target="XfG-lQ-9wD" id="pmY-sA-Qa9"/>
+                                </connections>
+                            </pathControl>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cus-f0-MHS">
+                                <rect key="frame" x="190" y="207" width="101" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="QT5-ZG-eGs"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UG0-oe-Yds">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="donwloadButtonPressed:" target="XfG-lQ-9wD" id="4Mc-89-uzx"/>
+                                </connections>
+                            </button>
+                            <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3U-qn-LYb">
+                                <rect key="frame" x="112" y="243" width="348" height="22"/>
+                                <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="i9q-If-KSh">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file:///usr/local/bin/ffmpeg"/>
+                                    <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                </pathCell>
+                                <connections>
+                                    <action selector="selectFfmpegPath:" target="XfG-lQ-9wD" id="WzB-ym-eTN"/>
+                                </connections>
+                            </pathControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VHX-IB-v5l">
+                                <rect key="frame" x="18" y="248" width="88" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FFMpeg path:" id="yVJ-Rk-iZf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9IX-1e-6z5">
+                                <rect key="frame" x="18" y="278" width="84" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Download to:" id="5VJ-Bx-eJF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="zh6-Ag-Zpd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="0O0-nP-mo0"/>
+                            <constraint firstItem="dZI-MW-9ZV" firstAttribute="leading" secondItem="JO6-Ki-6NJ" secondAttribute="trailing" constant="8" id="5UU-Fi-OXK"/>
+                            <constraint firstItem="9IX-1e-6z5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="5VQ-MZ-5Y0"/>
+                            <constraint firstItem="cus-f0-MHS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="196" id="7CZ-fI-j55"/>
+                            <constraint firstAttribute="trailing" secondItem="zh6-Ag-Zpd" secondAttribute="trailing" constant="20" id="8As-9H-aPo"/>
+                            <constraint firstItem="Hy6-Uz-wjp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Byr-AC-dyK"/>
+                            <constraint firstItem="N3U-qn-LYb" firstAttribute="top" secondItem="Krh-Dk-22F" secondAttribute="bottom" constant="8" id="Cb8-PY-6pF"/>
+                            <constraint firstAttribute="trailing" secondItem="Krh-Dk-22F" secondAttribute="trailing" constant="20" id="Lk9-u3-D6K"/>
+                            <constraint firstItem="N3U-qn-LYb" firstAttribute="leading" secondItem="VHX-IB-v5l" secondAttribute="trailing" constant="8" id="Nkt-Vp-i9n"/>
+                            <constraint firstAttribute="bottom" secondItem="zh6-Ag-Zpd" secondAttribute="bottom" constant="20" id="OPr-g7-G8N"/>
+                            <constraint firstItem="JO6-Ki-6NJ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" constant="-37.5" id="PbB-zH-NPH"/>
+                            <constraint firstItem="dZI-MW-9ZV" firstAttribute="top" secondItem="aL7-M1-18o" secondAttribute="bottom" constant="8" id="Pxa-fm-eSW"/>
+                            <constraint firstItem="rhq-KH-Q9i" firstAttribute="leading" secondItem="aL7-M1-18o" secondAttribute="trailing" constant="8" id="RaT-eq-nHX"/>
+                            <constraint firstItem="aL7-M1-18o" firstAttribute="top" secondItem="Hy6-Uz-wjp" secondAttribute="bottom" constant="8" id="Ugn-6p-Cwg"/>
+                            <constraint firstAttribute="trailing" secondItem="rhq-KH-Q9i" secondAttribute="trailing" constant="20" id="V7I-Fe-vP6"/>
+                            <constraint firstItem="VHX-IB-v5l" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="YTo-nv-3Tx"/>
+                            <constraint firstItem="rhq-KH-Q9i" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="45" id="ZbQ-mE-Pwx"/>
+                            <constraint firstItem="W4n-YW-ZQR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="32" id="bMl-dc-DW9"/>
+                            <constraint firstItem="9IX-1e-6z5" firstAttribute="top" secondItem="W4n-YW-ZQR" secondAttribute="bottom" constant="8" id="cQM-bd-vK5"/>
+                            <constraint firstItem="aL7-M1-18o" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="eAH-fR-8AR"/>
+                            <constraint firstItem="cus-f0-MHS" firstAttribute="top" secondItem="N3U-qn-LYb" secondAttribute="bottom" constant="8" id="eQJ-HJ-pzu"/>
+                            <constraint firstItem="VHX-IB-v5l" firstAttribute="top" secondItem="Krh-Dk-22F" secondAttribute="bottom" constant="8" id="fdf-Ta-8dV"/>
+                            <constraint firstItem="Krh-Dk-22F" firstAttribute="leading" secondItem="9IX-1e-6z5" secondAttribute="trailing" constant="8" id="gf4-sv-ck1"/>
+                            <constraint firstItem="Krh-Dk-22F" firstAttribute="top" secondItem="JO6-Ki-6NJ" secondAttribute="bottom" constant="8" id="gny-gO-tz1"/>
+                            <constraint firstItem="W4n-YW-ZQR" firstAttribute="top" secondItem="aL7-M1-18o" secondAttribute="bottom" constant="8" symbolic="YES" id="pIb-Ew-jIG"/>
+                            <constraint firstItem="JO6-Ki-6NJ" firstAttribute="leading" secondItem="W4n-YW-ZQR" secondAttribute="trailing" constant="8" id="pf6-gf-urQ"/>
+                            <constraint firstAttribute="trailing" secondItem="cus-f0-MHS" secondAttribute="trailing" constant="195" id="qNU-Kr-FGp"/>
+                            <constraint firstItem="Hy6-Uz-wjp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="rNH-5k-BLU"/>
+                            <constraint firstAttribute="trailing" secondItem="cus-f0-MHS" secondAttribute="trailing" constant="195" id="v4c-eD-nZB"/>
+                            <constraint firstAttribute="trailing" secondItem="N3U-qn-LYb" secondAttribute="trailing" constant="20" id="v7B-xM-KnS"/>
+                            <constraint firstItem="cus-f0-MHS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="196" id="x0k-5j-zx3"/>
+                            <constraint firstItem="JO6-Ki-6NJ" firstAttribute="top" secondItem="aL7-M1-18o" secondAttribute="bottom" constant="8" id="yTf-XO-LPq"/>
+                            <constraint firstItem="zh6-Ag-Zpd" firstAttribute="top" secondItem="cus-f0-MHS" secondAttribute="bottom" constant="8" id="zFz-8o-4ju"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="convertToMP3Button" destination="JO6-Ki-6NJ" id="lZu-XV-1WF"/>
+                        <outlet property="downloadButton" destination="cus-f0-MHS" id="QWb-WS-NPN"/>
+                        <outlet property="downloadPath" destination="Krh-Dk-22F" id="Y9v-ur-nhe"/>
+                        <outlet property="extractAudioButton" destination="W4n-YW-ZQR" id="XnP-bh-cvx"/>
+                        <outlet property="ffmpegPath" destination="N3U-qn-LYb" id="ffr-gk-RJS"/>
+                        <outlet property="keepFilesButton" destination="dZI-MW-9ZV" id="TB3-QJ-2XI"/>
+                        <outlet property="resultTextView" destination="bmr-q6-Vgu" id="4Xk-24-IPG"/>
+                        <outlet property="urlInput" destination="aL7-M1-18o" id="JQh-UQ-43d"/>
+                        <outlet property="viewButton" destination="rhq-KH-Q9i" id="C5t-xP-n0j"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="716"/>
         </scene>
     </scenes>
 </document>

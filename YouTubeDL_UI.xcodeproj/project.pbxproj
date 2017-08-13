@@ -190,13 +190,16 @@
 				TargetAttributes = {
 					C4FD2D311C675C7A00552E55 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0830;
 					};
 					C4FD2D421C675C7A00552E55 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = C4FD2D311C675C7A00552E55;
 					};
 					C4FD2D4D1C675C7A00552E55 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = C4FD2D311C675C7A00552E55;
 					};
 				};
@@ -390,6 +393,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -403,6 +407,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -415,6 +420,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouTubeDL_UI.app/Contents/MacOS/YouTubeDL_UI";
 			};
 			name = Debug;
@@ -428,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouTubeDL_UI.app/Contents/MacOS/YouTubeDL_UI";
 			};
 			name = Release;
@@ -440,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UIUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = YouTubeDL_UI;
 				USES_XCTRUNNER = YES;
 			};
@@ -453,6 +461,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UIUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = YouTubeDL_UI;
 				USES_XCTRUNNER = YES;
 			};
@@ -477,6 +486,7 @@
 				C4FD2D591C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4FD2D5A1C675C7A00552E55 /* Build configuration list for PBXNativeTarget "YouTubeDL_UITests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +495,7 @@
 				C4FD2D5C1C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4FD2D5D1C675C7A00552E55 /* Build configuration list for PBXNativeTarget "YouTubeDL_UIUITests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +504,7 @@
 				C4FD2D5F1C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

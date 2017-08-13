@@ -29,30 +29,31 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var ffmpegURL = NSURL()
-        var downloadURL = NSURL()
-        if let ffmpegURLValue = defaults.objectForKey(ffmpegKey) as? String {
-            ffmpegURL = NSURL(string: ffmpegURLValue)!
+        let defaults = UserDefaults.standard
+        let downloadURL: URL
+        var ffmpegURL: URL
+        
+        if let ffmpegURLValue = defaults.object(forKey: ffmpegKey) as? String {
+            ffmpegURL = URL(string: ffmpegURLValue)!
         } else {
-            ffmpegURL = NSURL(string: "/usr/local/bin/ffmpeg")!
+            ffmpegURL = URL(string: "/usr/local/bin/ffmpeg")!
         }
-        if let downloadURLValue = defaults.objectForKey(donwloadPathKey) as? String {
-            downloadURL = NSURL(string: downloadURLValue)!
+        if let downloadURLValue = defaults.object(forKey: donwloadPathKey) as? String {
+            downloadURL = URL(string: downloadURLValue)!
         } else {
-            downloadURL = NSFileManager().URLsForDirectory(.MoviesDirectory, inDomains: .UserDomainMask).first!
+            downloadURL = FileManager().urls(for: .moviesDirectory, in: .userDomainMask).first!
         }
-        downloadPath.URL = downloadURL
-        ffmpegPath.URL = ffmpegURL
+        downloadPath.url = downloadURL
+        ffmpegPath.url = ffmpegURL
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
 
-    @IBAction func selectDownloadPath(sender: NSPathControl) {
+    @IBAction func selectDownloadPath(_ sender: NSPathControl) {
         let fileDialog = NSOpenPanel()
         fileDialog.canChooseFiles = false
         fileDialog.canCreateDirectories = true
@@ -60,16 +61,16 @@ class ViewController: NSViewController {
         
         fileDialog.runModal()
         
-        let url = fileDialog.URL
+        let url = fileDialog.url
         if url?.path == nil {
             resultTextView.string = "Please select download directory"
         } else {
-            downloadPath.URL = url!
+            downloadPath.url = url!
             updateDefaults(donwloadPathKey, url: url!)
         }
     }
     
-    @IBAction func selectFfmpegPath(sender: NSPathControl) {
+    @IBAction func selectFfmpegPath(_ sender: NSPathControl) {
         let fileDialog = NSOpenPanel()
         fileDialog.canChooseFiles = true
         fileDialog.canCreateDirectories = false
@@ -77,57 +78,60 @@ class ViewController: NSViewController {
         
         fileDialog.runModal()
         
-        let url = fileDialog.URL
-        if url?.path == nil {
+        let url = fileDialog.urls[0]
+        if url.path == nil {
             resultTextView.string = "Please select ffmpeg binary location"
         } else {
-            ffmpegPath.URL = url!
-            updateDefaults(ffmpegKey, url: url!)
+            ffmpegPath.url = url
+            updateDefaults(ffmpegKey, url: url)
         }
     }
     
-    func updateDefaults(key: String, url: NSURL) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setURL(url, forKey: key)
+    func updateDefaults(_ key: String, url: URL) {
+        let defaults = UserDefaults.standard
+        defaults.set(url, forKey: key)
         defaults.synchronize()
     }
     
-    func executeDownload(command: String, args: [String]) -> String {
-        let task = NSTask()
+    func executeDownload(_ command: String, args: [String]) -> (String?, Int32) {
+        var output: [String] = []
+        
+        let task = Process()
         task.launchPath = command
         task.arguments = args
         
-        let pipe = NSPipe()
+        let pipe = Pipe()
         task.standardOutput = pipe
         task.standardError = pipe
-        task.currentDirectoryPath = downloadPath.URL!.path!
+        task.currentDirectoryPath = downloadPath.url!.path
         
         task.launch()
         
-        let handle = pipe.fileHandleForReading
-        let data = handle.readDataToEndOfFile()
-        let output: String = String(data: data, encoding: NSUTF8StringEncoding)!
+        let outdata = pipe.fileHandleForReading.readDataToEndOfFile()
+        var output = String(data: outdata, encoding: .utf8)
+        
+        task.waitUntilExit()
 
-        return output
+        return (output, task.terminationStatus)
     }
     
-    @IBAction func extractAudioButtonPressed(sender: NSButton) {
+    @IBAction func extractAudioButtonPressed(_ sender: NSButton) {
         if extractAudioButton.state == NSOnState {
-            convertToMP3Button.enabled = true
+            convertToMP3Button.isEnabled = true
         } else {
-            convertToMP3Button.enabled = false
+            convertToMP3Button.isEnabled = false
         }
     }
     
-    @IBAction func viewButtonPressed(sender: NSButton) {
-        let url = NSURL(string: urlInput.stringValue)!
-        NSWorkspace.sharedWorkspace().openURL(url)
+    @IBAction func viewButtonPressed(_ sender: NSButton) {
+        let url = URL(string: urlInput.stringValue)!
+        NSWorkspace.shared().open(url)
     }
 
-    @IBAction func donwloadButtonPressed(sender: NSButton) {
-        var output = String()
+    @IBAction func donwloadButtonPressed(_ sender: NSButton) {
+        var output: [String] = []
         if urlInput.stringValue.isEmpty {
-            output = "Please paste youtube URL"
+            output = ["Please paste youtube URL"]
         } else {
             let cmd = "/usr/local/bin/youtube-dl"
             var args = [String]()

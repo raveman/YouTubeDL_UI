@@ -93,7 +93,7 @@ class ViewController: NSViewController {
         defaults.synchronize()
     }
     
-    func executeDownload(_ command: String, args: [String]) -> (String?, Int32) {
+    func executeDownload(_ command: String, args: [String]) {
         var output: [String] = []
         
         let task = Process()
@@ -107,12 +107,14 @@ class ViewController: NSViewController {
         
         task.launch()
         
-        let outdata = pipe.fileHandleForReading.readDataToEndOfFile()
-        var output = String(data: outdata, encoding: .utf8)
-        
-        task.waitUntilExit()
-
-        return (output, task.terminationStatus)
+        let outhandle = pipe.fileHandleForReading
+        outhandle.readabilityHandler = { pipe in
+            if let line = String(data:pipe.availableData, encoding: .utf8) {
+                DispatchQueue.main.async() {
+                    self.resultTextView.string?.append(line)
+                }
+            }
+        }
     }
     
     @IBAction func extractAudioButtonPressed(_ sender: NSButton) {
@@ -129,9 +131,8 @@ class ViewController: NSViewController {
     }
 
     @IBAction func donwloadButtonPressed(_ sender: NSButton) {
-        var output: [String] = []
         if urlInput.stringValue.isEmpty {
-            output = ["Please paste youtube URL"]
+            self.resultTextView.string = "Please paste youtube URL"
         } else {
             let cmd = "/usr/local/bin/youtube-dl"
             var args = [String]()
@@ -152,9 +153,8 @@ class ViewController: NSViewController {
             }
             args.append(urlInput.stringValue)
             
-            output = executeDownload(cmd, args: args)
+           executeDownload(cmd, args: args)
         }
-        resultTextView.string = output
     }
 }
 

@@ -94,8 +94,6 @@ class ViewController: NSViewController {
     }
     
     func executeDownload(_ command: String, args: [String]) {
-        var output: [String] = []
-        
         let task = Process()
         task.launchPath = command
         task.arguments = args

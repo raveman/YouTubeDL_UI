@@ -11,8 +11,6 @@
 		C4FD2D381C675C7A00552E55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD2D371C675C7A00552E55 /* ViewController.swift */; };
 		C4FD2D3A1C675C7A00552E55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FD2D391C675C7A00552E55 /* Assets.xcassets */; };
 		C4FD2D3D1C675C7A00552E55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FD2D3B1C675C7A00552E55 /* Main.storyboard */; };
-		C4FD2D481C675C7A00552E55 /* YouTubeDL_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD2D471C675C7A00552E55 /* YouTubeDL_UITests.swift */; };
-		C4FD2D531C675C7A00552E55 /* YouTubeDL_UIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD2D521C675C7A00552E55 /* YouTubeDL_UIUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,11 +38,7 @@
 		C4FD2D3C1C675C7A00552E55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4FD2D3E1C675C7A00552E55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4FD2D431C675C7A00552E55 /* YouTubeDL_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouTubeDL_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4FD2D471C675C7A00552E55 /* YouTubeDL_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeDL_UITests.swift; sourceTree = "<group>"; };
-		C4FD2D491C675C7A00552E55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4FD2D4E1C675C7A00552E55 /* YouTubeDL_UIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouTubeDL_UIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4FD2D521C675C7A00552E55 /* YouTubeDL_UIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeDL_UIUITests.swift; sourceTree = "<group>"; };
-		C4FD2D541C675C7A00552E55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				C4FD2D341C675C7A00552E55 /* YouTubeDL_UI */,
-				C4FD2D461C675C7A00552E55 /* YouTubeDL_UITests */,
-				C4FD2D511C675C7A00552E55 /* YouTubeDL_UIUITests */,
 				C4FD2D331C675C7A00552E55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,24 +94,6 @@
 				C4FD2D3E1C675C7A00552E55 /* Info.plist */,
 			);
 			path = YouTubeDL_UI;
-			sourceTree = "<group>";
-		};
-		C4FD2D461C675C7A00552E55 /* YouTubeDL_UITests */ = {
-			isa = PBXGroup;
-			children = (
-				C4FD2D471C675C7A00552E55 /* YouTubeDL_UITests.swift */,
-				C4FD2D491C675C7A00552E55 /* Info.plist */,
-			);
-			path = YouTubeDL_UITests;
-			sourceTree = "<group>";
-		};
-		C4FD2D511C675C7A00552E55 /* YouTubeDL_UIUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C4FD2D521C675C7A00552E55 /* YouTubeDL_UIUITests.swift */,
-				C4FD2D541C675C7A00552E55 /* Info.plist */,
-			);
-			path = YouTubeDL_UIUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +159,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Bob Ershov";
 				TargetAttributes = {
 					C4FD2D311C675C7A00552E55 = {
@@ -264,7 +238,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4FD2D481C675C7A00552E55 /* YouTubeDL_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +245,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4FD2D531C675C7A00552E55 /* YouTubeDL_UIUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,8 +288,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -347,42 +321,6 @@
 			};
 			name = Debug;
 		};
-		C4FD2D561C675C7A00552E55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
 		C4FD2D581C675C7A00552E55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -396,20 +334,6 @@
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
-		};
-		C4FD2D591C675C7A00552E55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = YouTubeDL_UI/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
 		};
 		C4FD2D5B1C675C7A00552E55 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -425,20 +349,6 @@
 			};
 			name = Debug;
 		};
-		C4FD2D5C1C675C7A00552E55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = YouTubeDL_UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouTubeDL_UI.app/Contents/MacOS/YouTubeDL_UI";
-			};
-			name = Release;
-		};
 		C4FD2D5E1C675C7A00552E55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -453,20 +363,6 @@
 			};
 			name = Debug;
 		};
-		C4FD2D5F1C675C7A00552E55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = YouTubeDL_UIUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.raveman.YouTubeDL-UIUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = YouTubeDL_UI;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -474,37 +370,33 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4FD2D551C675C7A00552E55 /* Debug */,
-				C4FD2D561C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C4FD2D571C675C7A00552E55 /* Build configuration list for PBXNativeTarget "YouTubeDL_UI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4FD2D581C675C7A00552E55 /* Debug */,
-				C4FD2D591C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C4FD2D5A1C675C7A00552E55 /* Build configuration list for PBXNativeTarget "YouTubeDL_UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4FD2D5B1C675C7A00552E55 /* Debug */,
-				C4FD2D5C1C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C4FD2D5D1C675C7A00552E55 /* Build configuration list for PBXNativeTarget "YouTubeDL_UIUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4FD2D5E1C675C7A00552E55 /* Debug */,
-				C4FD2D5F1C675C7A00552E55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
